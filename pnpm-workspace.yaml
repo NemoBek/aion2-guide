@@ -1,0 +1,6 @@
+packages:
+  - .
+verifyDepsBeforeRun: false
+allowBuilds:
+  unrs-resolver: true
+  sharp: true

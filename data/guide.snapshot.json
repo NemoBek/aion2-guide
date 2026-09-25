@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "sourceUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0C3iKFteGvIbgqNDnQq7bmwIaU23DvjbPa0HPSVAdOOiCeBkEq69Cn8jVMJhToJcztCRylYeTYfOk/pubhtml",
+  "lastSyncedAt": "2026-09-25T05:28:03.110Z",
+  "routeSteps": [
+    {
+      "id": "feathers",
+      "range": "После пролога",
+      "title": "Собери 40 перьев",
+      "short": "Это 120 осколков для раннего усиления амулета.",
+      "details": [
+        "Подбирай перья параллельно сюжетной линии — специально бегать кругами не нужно.",
+        "В первой локации закрой 6 отмеченных знаком вопроса соло-подземелий.",
+        "После сдачи перьев получишь купоны для заточки амулета."
+      ],
+      "image": "/assets/progression/start-01.png"
+    },
+    {
+      "id": "amulet",
+      "range": "Около 17 уровня",
+      "title": "Подними амулет до +10",
+      "short": "После +10 сними его и через морф сделай синим.",
+      "details": [
+        "Сначала обычной заточки может хватить только примерно до +6 — это нормально.",
+        "Используй купоны от перьев, доведи до +10, затем сними предмет.",
+        "Открой морф и создай синюю версию. После этого перья временно можно не собирать."
+      ],
+      "image": "/assets/progression/start-16.png"
+    },
+    {
+      "id": "acts23",
+      "range": "Акты 2–3",
+      "title": "Иди только по сюжету",
+      "short": "Не распыляйся на карту и случайные активности.",
+      "details": [
+        "Пройди основные задания второго и третьего актов.",
+        "Сюжетные подземелья удобнее закрывать соло через приватную группу.",
+        "Если появляется сюжетный вход в активность — заходи сразу, не откладывай."
+      ]
+    },
+    {
+      "id": "act4",
+      "range": "Акт 4",
+      "title": "Вернись к полезным побочным задачам",
+      "short": "Здесь снова нужны отдельные соло-подземелья и квест Вирона.",
+      "details": [
+        "Возьми у Вирона побочное задание на пауков.",
+        "Закрой отмеченные в гайде соло-подземелья этой зоны.",
+        "Выполни зелёные задания в указанной сюжетной локации."
+      ],
+      "image": "/assets/progression/start-11.png"
+    },
+    {
+      "id": "rush45",
+      "range": "До 45 уровня",
+      "title": "Снова держись основной истории",
+      "short": "Главная цель — открыть полный набор наград 45 уровня.",
+      "details": [
+        "После обязательных задач четвёртого акта продолжай главный сюжет.",
+        "Не пытайся закрыть всю карту во время прокачки — это будет сделано после 45.",
+        "После сюжета вернись к зелёным заданиям 32–33 уровня ради рун."
+      ]
+    }
+  ],
+  "after45": [
+    {
+      "id": "shugo",
+      "title": "Шуго",
+      "text": "Ходи на доступные активности. На 45 уровне выдаётся полный набор наград, включая золотой шмот и материалы."
+    },
+    {
+      "id": "map",
+      "title": "Карта",
+      "text": "Закрывай знаки вопроса, костры, зелёные задания, скрытые кубы и встреченные перья — от ранних локаций к поздним."
+    },
+    {
+      "id": "altar",
+      "title": "Алтарь",
+      "text": "Сдай собранные перья и подними алтарь до 30 уровня, чтобы получить титул."
+    },
+    {
+      "id": "nightmare",
+      "title": "Nightmare",
+      "text": "Потрать ежедневный вход и забери прогрессию без лишнего гринда."
+    },
+    {
+      "id": "arcana",
+      "title": "Трансформация и арканы",
+      "text": "Открой второй этаж первой трансформации, затем закрывай доступные этажи по мере роста GS."
+    },
+    {
+      "id": "dungeons",
+      "title": "Подземелья",
+      "text": "Следи за энергией. Сначала T2, затем T3. Роллить нужные статы разумнее уже на снаряжении T3."
+    }
+  ],
+  "classData": {
+    "ranger": {
+      "name": "Лучник",
+      "role": "Дальний урон и мобильность",
+      "summary": "Понятный выбор, если хочется держать дистанцию. В исходнике есть ноды, панель и ориентиры по арканам.",
+      "startBuild": "https://aion2t.com/ru/simulator?job=4&b=fV6T2F",
+      "skillBuild": "https://aion2t.com/ru/simulator?job=4&b=8QbCF0",
+      "stones": "В арканах ищи Snipe, Deadshot, Tempest Shot и Gale Arrow.",
+      "files": [
+        "/assets/classes/ranger/ranger-01.png",
+        "/assets/classes/ranger/ranger-02.png",
+        "/assets/classes/ranger/ranger-03.png",
+        "/assets/classes/ranger/ranger-04.png",
+        "/assets/classes/ranger/ranger-05.png",
+        "/assets/classes/ranger/ranger-06.png",
+        "/assets/classes/ranger/ranger-07.png",
+        "/assets/classes/ranger/ranger-08.png",
+        "/assets/classes/ranger/ranger-09.png",
+        "/assets/classes/ranger/ranger-10.png"
+      ]
+    },
+    "assassin": {
+      "name": "Ассасин",
+      "role": "Ближний бой и взрывной урон",
+      "summary": "Требует ближней дистанции и аккуратного управления. В исходнике есть стартовая раскладка и последовательность навыков.",
+      "startBuild": "https://aion2t.com/ru/simulator?job=5&b=iUjpcy",
+      "skillBuild": "https://aion2t.com/ru/simulator?job=5&b=MeyRht",
+      "stones": "Манастоуны: атака, критический удар и точность.",
+      "files": [
+        "/assets/classes/assassin/assassin-01.png",
+        "/assets/classes/assassin/assassin-02.png",
+        "/assets/classes/assassin/assassin-03.png",
+        "/assets/classes/assassin/assassin-04.png",
+        "/assets/classes/assassin/assassin-05.png",
+        "/assets/classes/assassin/assassin-06.png",
+        "/assets/classes/assassin/assassin-07.png",
+        "/assets/classes/assassin/assassin-08.png",
+        "/assets/classes/assassin/assassin-09.png",
+        "/assets/classes/assassin/assassin-10.png"
+      ]
+    },
+    "chanter": {
+      "name": "Чантер",
+      "role": "Поддержка, лечение и самостоятельность",
+      "summary": "Самый близкий к твоему запросу на полезного персонажа с отхилом. Можно комфортно играть одному и оставаться нужным группе.",
+      "startBuild": "https://aion2t.com/ru/simulator?job=9&b=S5RCtE",
+      "skillBuild": "https://aion2t.com/ru/simulator?job=9&b=yDzsiQ",
+      "stones": "Манастоуны: атака, критический удар и точность. Гвард — ориентир +10.",
+      "files": [
+        "/assets/classes/chanter/chanter-01.png",
+        "/assets/classes/chanter/chanter-02.png",
+        "/assets/classes/chanter/chanter-03.png",
+        "/assets/classes/chanter/chanter-04.png",
+        "/assets/classes/chanter/chanter-05.png",
+        "/assets/classes/chanter/chanter-06.png",
+        "/assets/classes/chanter/chanter-07.png",
+        "/assets/classes/chanter/chanter-08.png",
+        "/assets/classes/chanter/chanter-09.png",
+        "/assets/classes/chanter/chanter-10.png",
+        "/assets/classes/chanter/chanter-11.png",
+        "/assets/classes/chanter/chanter-12.png",
+        "/assets/classes/chanter/chanter-13.png",
+        "/assets/classes/chanter/chanter-14.png"
+      ]
+    }
+  },
+  "farmTiers": [
+    {
+      "tier": "S",
+      "color": "bg-[#ff6b6b]",
+      "items": [
+        "Мобы в Бездне: кина, AP, золотое снаряжение, материалы и задания",
+        "Сбор ресурсов: дерево, одилия и кожа",
+        "Крафт superior-манастоунов после накопления малых камней"
+      ]
+    },
+    {
+      "tier": "A",
+      "color": "bg-[#ffad66]",
+      "items": [
+        "Торговля на аукционе — только если уже понимаешь рынок и цены"
+      ]
+    },
+    {
+      "tier": "B",
+      "color": "bg-[#f6cf65]",
+      "items": [
+        "Крафт заготовок 60 уровня и низкоуровневого снаряжения",
+        "Быстрые забеги в T1 ради редких материалов",
+        "Ранние твинки: много времени при небольшой начальной прибыли"
+      ]
+    }
+  ],
+  "mechanics": [
+    {
+      "icon": "Hammer",
+      "title": "Заточка и морф",
+      "text": "Ранний ориентир — амулет +10, затем синяя версия через морф. Не спеши поднимать оружие сильно выше +10, пока не собрана основа билда.",
+      "image": "/assets/mechanics/mechanics-01.png"
+    },
+    {
+      "icon": "Target",
+      "title": "Характеристики",
+      "text": "Для урона в приоритете атака и крит. Затем добирай точность и пробивание под свой класс и контент.",
+      "image": "/assets/mechanics/mechanics-02.png"
+    },
+    {
+      "icon": "Crown",
+      "title": "Титулы",
+      "text": "Эффекты титулов складываются. Полученные титулы работают постоянно, поэтому боссы и исследование карты имеют смысл.",
+      "image": "/assets/synced/mechanics-03-ab028270d50e.png"
+    },
+    {
+      "icon": "Gem",
+      "title": "Soul Binding",
+      "text": "Первая привязка сохраняет количество статов. Повторный перенос позволяет сменить значения, но требует материалы и кину.",
+      "image": "/assets/synced/mechanics-04-72e2bfb7a316.png"
+    },
+    {
+      "icon": "Sparkles",
+      "title": "Сезонные очки",
+      "text": "Сезон длится ограниченное время. Забирай очки из активностей и сначала покупай действительно дефицитные материалы.",
+      "image": "/assets/mechanics/mechanics-05.png"
+    }
+  ],
+  "galleries": {
+    "progression": [
+      "/assets/progression/start-01.png",
+      "/assets/progression/start-02.png",
+      "/assets/progression/start-03.png",
+      "/assets/progression/start-04.png",
+      "/assets/progression/start-05.png",
+      "/assets/progression/start-06.png",
+      "/assets/progression/start-07.png",
+      "/assets/progression/start-08.png",
+      "/assets/progression/start-09.png",
+      "/assets/progression/start-10.png",
+      "/assets/progression/start-11.png",
+      "/assets/progression/start-12.png",
+      "/assets/progression/start-13.png",
+      "/assets/progression/start-14.png",
+      "/assets/progression/start-15.png",
+      "/assets/progression/start-16.png"
+    ]
+  }
+}

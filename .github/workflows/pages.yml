@@ -1,0 +1,53 @@
+name: Publish Aion 2 guide
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 3,15 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Sync the public sheet
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: pnpm sync
+      - name: Build and validate static site
+        run: pnpm build:pages
+      - name: Save validated snapshot
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          git add data/guide.snapshot.json public/assets/synced
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "chore(data): sync guide [skip ci]"
+            git push origin HEAD:main
+          fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: out
+      - id: deployment
+        uses: actions/deploy-pages@v4
