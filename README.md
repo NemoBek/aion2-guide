@@ -22,22 +22,9 @@ pnpm dev
 
 ## Публикация на GitHub Pages
 
-1. Создайте **публичный** репозиторий с именем `aion2-guide` и основной веткой `main`.
-2. Загрузите содержимое **этой папки** в корень репозитория через Git или GitHub Desktop. Папки `node_modules`, `.next`, `out`, `.sites-runtime` исключены через `.gitignore`; файл workflow в скрытой папке `.github` должен попасть в репозиторий.
-3. В GitHub откройте **Settings → Pages → Build and deployment → Source** и выберите **GitHub Actions**.
-4. Запустите **Actions → Publish Aion 2 guide → Run workflow** или дождитесь сборки после загрузки в `main`.
+Сайт опубликован по адресу [nemobek.github.io/aion2-guide](https://nemobek.github.io/aion2-guide/). Исходный код находится в [репозитории NemoBek/aion2-guide](https://github.com/NemoBek/aion2-guide). GitHub Pages использует GitHub Actions. Каждая загрузка в ветку `main` проверяет снимок, собирает сайт и публикует его. Если сборка завершится ошибкой, опубликованная версия останется доступной.
 
-После успешного запуска адрес будет `https://<ваш-логин>.github.io/aion2-guide/`. Если репозиторий будет называться иначе, измените `/aion2-guide` в `scripts/build-pages.mjs`.
-
-Пример первой отправки через Git из этой папки (подставьте свой логин):
-
-```bash
-git init -b main
-git add .
-git commit -m "Initial Aion 2 guide"
-git remote add origin https://github.com/<ваш-логин>/aion2-guide.git
-git push -u origin main
-```
+Для изменения сайта загрузите проверенные правки в `main` и дождитесь зелёного запуска **Actions → Publish Aion 2 guide**. Для обновления таблицы вне расписания откройте этот workflow и нажмите **Run workflow**. Если репозиторий будет переименован, измените `/aion2-guide` в `scripts/build-pages.mjs`.
 
 ## Обновление данных
 
