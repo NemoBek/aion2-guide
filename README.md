@@ -1,6 +1,6 @@
 # Aion 2 — интерактивный гайд
 
-Русскоязычный неофициальный гайд по прокачке и первым дням в Aion 2. Основа — [публичная таблица сообщества](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0C3iKFteGvIbgqNDnQq7bmwIaU23DvjbPa0HPSVAdOOiCeBkEq69Cn8jVMJhToJcztCRylYeTYfOk/pubhtml). Сайт не меняет исходную таблицу.
+Русскоязычный неофициальный гайд по прокачке и первым дням в Aion 2. Основа — [публичная таблица TitanTheF](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0C3iKFteGvIbgqNDnQq7bmwIaU23DvjbPa0HPSVAdOOiCeBkEq69Cn8jVMJhToJcztCRylYeTYfOk/pubhtml). Сайт не меняет исходную таблицу.
 
 ## Что работает
 
@@ -38,4 +38,4 @@ Workflow `.github/workflows/pages.yml` запускается при загру�
 
 ## Авторство
 
-В футере есть ссылка на оригинальную таблицу и отметка о неофициальном характере сайта. Имя или ссылка автора оригинала будут добавлены после согласования с ним.
+Автор исходной таблицы TitanTheF разрешил указать его каналы: [Discord](https://discord.com/invite/m5UNHgK6P8), [Telegram](https://t.me/titanforeve), [Twitch](https://www.twitch.tv/titanthef), [YouTube](https://www.youtube.com/@TitanTheF). В футере также сохранены ссылка на таблицу и отметка о неофициальном характере сайта.
