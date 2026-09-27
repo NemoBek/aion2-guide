@@ -241,13 +241,13 @@
       "icon": "Crown",
       "title": "Титулы",
       "text": "Эффекты титулов складываются. Полученные титулы работают постоянно, поэтому боссы и исследование карты имеют смысл.",
-      "image": "/assets/synced/mechanics-03-ab028270d50e.png"
+      "image": "/assets/synced/mechanics-04-72e2bfb7a316.png"
     },
     {
       "icon": "Gem",
       "title": "Soul Binding",
       "text": "Первая привязка сохраняет количество статов. Повторный перенос позволяет сменить значения, но требует материалы и кину.",
-      "image": "/assets/synced/mechanics-04-72e2bfb7a316.png"
+      "image": "/assets/synced/mechanics-03-ab028270d50e.png"
     },
     {
       "icon": "Sparkles",

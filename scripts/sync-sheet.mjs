@@ -15,6 +15,8 @@ const sheetIds = {
 };
 const publishBase = sourceUrl.replace(/\/pubhtml$/, '');
 const maxImageBytes = 5 * 1024 * 1024;
+// The sheet places Soul Binding before Titles; the guide cards use the reverse order.
+const mechanicsSourceOrder = [0, 1, 3, 2, 4];
 
 async function download(url, binary = false) {
   const response = await fetch(url, { signal: AbortSignal.timeout(20000), headers: { 'User-Agent': 'aion2-guide-sync/1.0' } });
@@ -147,7 +149,7 @@ async function main() {
   const tierListsHtml = await download(`${publishBase}/pubhtml/sheet?headers=false&gid=${sheetIds.tierLists}`);
   const images = {
     progression: await prepareImages(progressionHtml, current.galleries.progression, 'progression'),
-    mechanics: await prepareImages(mechanicsHtml, current.mechanics.map((item) => item.image), 'mechanics'),
+    mechanics: await prepareImages(mechanicsHtml, mechanicsSourceOrder.map((index) => current.mechanics[index].image), 'mechanics'),
     tierLists: await prepareImages(tierListsHtml, current.tierLists.flatMap((item) => item.images), 'tierlists'),
   };
   const next = structuredClone(current);
@@ -157,7 +159,7 @@ async function main() {
   next.routeSteps[0].image = next.galleries.progression[0];
   next.routeSteps[1].image = next.galleries.progression[15];
   next.routeSteps[3].image = next.galleries.progression[10];
-  next.mechanics.forEach((item, i) => { item.image = images.mechanics[i].reference; });
+  next.mechanics.forEach((item, i) => { item.image = images.mechanics[mechanicsSourceOrder[i]].reference; });
   let tierImageIndex = 0;
   next.tierLists.forEach((item) => { item.images = item.images.map(() => images.tierLists[tierImageIndex++].reference); });
   const same = JSON.stringify({ ...next, lastSyncedAt: null }) === JSON.stringify({ ...current, lastSyncedAt: null });
