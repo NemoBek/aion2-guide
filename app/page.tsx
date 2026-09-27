@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowUpRight, BookOpen, Check, ChevronRight, CircleDot, Compass, Crown, Gem, Hammer, Map, Menu, Route, Swords, Target, Timer, WandSparkles, X } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight, BookOpen, Check, ChevronRight, CircleAlert, CircleDot, Compass, Crown, Gem, Hammer, Keyboard, Map, Menu, MousePointer2, Route, Swords, Target, Timer, WandSparkles, X } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
@@ -14,7 +15,53 @@ type GuideModelContext = { registerTool: (tool: { name: string; title: string; d
 const { routeSteps, after45, classData, farmTiers, crafting, tierLists, mechanics } = guide;
 const allTaskIds = [...routeSteps.map((item) => item.id), ...after45.map((item) => item.id)];
 
-const navItems = [["start", "Старт", Compass], ["route", "1–45", Route], ["endgame", "После 45", Crown], ["farm", "Фарм", Gem], ["crafting", "Крафт", Hammer], ["tiers", "Тир-листы", Target], ["mechanics", "Механики", Hammer], ["classes", "Классы", Swords]] as const;
+const navItems = [["start", "Старт", Compass], ["route", "1–45", Route], ["endgame", "После 45", Crown], ["farm", "Фарм", Gem], ["crafting", "Крафт", Hammer], ["tiers", "Тир-листы", Target], ["mechanics", "Механики", Hammer], ["macros", "Макросы", Keyboard], ["classes", "Классы", Swords]] as const;
+
+const macroClasses = [
+  ["Assassin", "Ассасин"], ["Cleric", "Клирик"], ["Sorcerer", "Волшебник"], ["Templar", "Страж"],
+  ["Chanter", "Чантер"], ["Gladiator", "Гладиатор"], ["Spiritmaster", "Заклинатель"], ["Ranger", "Лучник"],
+] as const;
+
+function MacroGuide() {
+  const steps = [
+    { number: "01", title: "Назначь клавишу макроса", text: "Esc → Настройки → Управление → Общее → Игровой процесс. Найди «Макрос» и назначь удобную клавишу." },
+    { number: "02", title: "Собери основную панель", text: "Поставь часто используемые боевые навыки на одну клавишу панели — например, Q. Умения должны быть доступны в этой ячейке." },
+    { number: "03", title: "Создай макрос в игре", text: "Открой «Макрос» в правом верхнем углу → «Добавить макрос». Нажми на ячейку макроса и выбери клавишу панели Q, а не отдельное умение." },
+    { number: "04", title: "Используй две кнопки", text: "Удерживай кнопку макроса вместе с ЛКМ. Так базовая атака вплетается в ротацию и помогает прерывать анимации навыков." },
+  ];
+
+  return <section id="macros" className="scroll-mt-20 border-b border-white/8 px-4 py-14 sm:px-8 xl:px-14">
+    <SectionTitle eyebrow="Ротация навыков" title="Макросы: настрой один раз — нажимай проще" text="Пошаговая настройка встроенного макроса и понятная схема нажатий из видео Grobs. Внешние программы для мыши не нужны." />
+    <div className="grid gap-4 lg:grid-cols-[1.1fr_.9fr]">
+      <div className="rounded-2xl border border-cyan-200/20 bg-[linear-gradient(145deg,rgba(45,116,135,.18),rgba(18,34,47,.82)_58%,rgba(161,129,73,.10))] p-5 sm:p-7">
+        <div className="flex items-center gap-3"><span className="grid size-11 place-items-center rounded-xl border border-cyan-100/15 bg-cyan-100/10 text-cyan-100"><MousePointer2 className="size-5" /></span><div><p className="text-xs font-semibold uppercase tracking-[.15em] text-cyan-100/70">Боевая связка</p><h3 className="mt-1 text-xl font-semibold text-white">Удерживай обе кнопки</h3></div></div>
+        <div className="mt-7 flex flex-wrap items-center gap-3" aria-label="Удерживай левую кнопку мыши и кнопку макроса одновременно">
+          <div className="grid min-w-28 place-items-center rounded-xl border border-white/15 bg-[#0a1420]/80 px-4 py-3"><MousePointer2 className="mb-1 size-5 text-cyan-200" /><kbd className="font-sans text-sm font-bold text-white">ЛКМ</kbd><span className="mt-1 text-[.68rem] text-slate-400">базовая атака</span></div>
+          <span className="text-xl font-light text-slate-500">+</span>
+          <div className="grid min-w-28 place-items-center rounded-xl border border-amber-200/20 bg-[#0a1420]/80 px-4 py-3"><Keyboard className="mb-1 size-5 text-amber-200" /><kbd className="font-sans text-sm font-bold text-white">КЛАВИША</kbd><span className="mt-1 text-[.68rem] text-slate-400">встроенный макрос</span></div>
+          <p className="basis-full pt-2 text-sm leading-6 text-slate-300">Игра повторяет выбранные навыки, а обычная атака вплетается между ними. Автор советует не добавлять ЛКМ в тот же список макроса: так анимации могут отменяться реже.</p>
+        </div>
+      </div>
+      <div className="rounded-2xl border border-white/10 bg-[#101d2a]/80 p-5 sm:p-7">
+        <p className="aion-eyebrow">Настройка в игре</p>
+        <ol className="mt-5 space-y-4">{steps.map((step) => <li key={step.number} className="flex gap-4"><span className="grid size-9 shrink-0 place-items-center rounded-lg border border-amber-100/15 bg-amber-100/[.06] font-mono text-xs font-bold text-[#ead29b]">{step.number}</span><div><h3 className="font-semibold text-white">{step.title}</h3><p className="mt-1.5 text-sm leading-6 text-slate-400">{step.text}</p></div></li>)}</ol>
+      </div>
+    </div>
+    <div className="mt-4 grid gap-4 lg:grid-cols-2">
+      <div className="rounded-2xl border border-amber-200/15 bg-amber-100/[.035] p-5 sm:p-6"><div className="flex items-center gap-2 text-amber-100"><CircleAlert className="size-4" /><h3 className="font-semibold">Как выбирается навык</h3></div><p className="mt-3 text-sm leading-6 text-slate-300">В закреплённом комментарии автор уточнил: игра проверяет навыки снизу списка вверх и использует доступный. Если нижний навык не уходит на перезарядку, он может срабатывать снова и мешать навыкам выше. Это не строгая очередь «раз, два, три».</p></div>
+      <div className="rounded-2xl border border-white/10 bg-white/[.025] p-5 sm:p-6"><h3 className="font-semibold text-white">Что оставить вне макроса</h3><p className="mt-3 text-sm leading-6 text-slate-400">На старте добавляй только умения для постоянной ротации. Передвижение и важные баффы оставь на отдельных кнопках, чтобы самому выбирать момент их применения. Позже проверь ротацию ещё раз после открытия специализаций.</p></div>
+    </div>
+    <div className="mt-8">
+      <div className="mb-4 flex flex-wrap items-end justify-between gap-3"><div><p className="aion-eyebrow">Подборки автора</p><h3 className="mt-2 font-display text-2xl text-[#f8f3e8]">Ранние макросы для 8 классов</h3></div><a href="https://www.youtube.com/watch?v=HMod6Z4GrE0&t=453s" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-200 underline decoration-cyan-200/25 underline-offset-4 hover:text-white">Открыть схемы с 7:33 <ArrowUpRight className="size-4" /></a></div>
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">{macroClasses.map(([name, label], index) => <div key={name} className="flex min-h-[72px] items-center gap-3 rounded-xl border border-white/10 bg-[#111e2a]/80 p-3 sm:p-4"><span className="grid size-9 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/[.04] font-mono text-xs text-slate-300">0{index + 1}</span><span><span className="block text-[.65rem] font-semibold uppercase tracking-[.12em] text-slate-500">{name}</span><span className="mt-0.5 block font-semibold text-slate-100">{label}</span></span></div>)}</div>
+      <div className="mt-4 overflow-hidden rounded-2xl border border-white/10 bg-[#070d14]">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/8 px-4 py-3 sm:px-5"><p className="text-sm font-semibold text-slate-200">Схемы макросов Grobs для всех классов</p><span className="text-xs text-slate-500">Источник: видео автора, 7:33</span></div>
+        <a href="https://www.youtube.com/watch?v=HMod6Z4GrE0&t=453s" target="_blank" rel="noopener noreferrer" className="group block bg-[#070d14]" aria-label="Открыть видео Grobs с настройками макросов для всех классов на отметке 7 минут 33 секунды"><Image src={assetPath("/assets/macros/grobs-early-class-macros.png")} alt="Схемы ранних макросов Grobs для ассасина, клирика, волшебника, стража, чантера, гладиатора, заклинателя и лучника" width={863} height={487} unoptimized className="mx-auto h-auto w-full transition group-hover:brightness-110" loading="lazy" /></a>
+      </div>
+      <p className="mt-3 text-xs leading-5 text-slate-500">Названия классов переведены для удобства; конкретные значки навыков и порядок автора показаны в ролике. Назначения клавиш в видео личные — их можно выбрать под себя.</p>
+    </div>
+  </section>;
+}
 
 function SectionTitle({ eyebrow, title, text }: { eyebrow: string; title: string; text?: string }) {
   return <div className="aion-section-title mb-7 max-w-3xl"><p className="aion-eyebrow mb-3">{eyebrow}</p><h2 className="font-display text-3xl font-medium leading-tight text-[#f8f3e8] sm:text-[2.65rem]">{title}</h2>{text ? <p className="mt-4 text-[1rem] leading-7 text-slate-300/80">{text}</p> : null}</div>;
@@ -100,6 +147,8 @@ export default function Home() {
         </section>
 
         <section id="mechanics" className="scroll-mt-20 border-b border-white/8 px-4 py-14 sm:px-8 xl:px-14"><SectionTitle eyebrow="Система развития" title="Пять механик, которые нельзя пропустить" /><div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{mechanics.map((item) => <a key={item.title} href={assetPath(item.image)} target="_blank" rel="noreferrer" className="group rounded-2xl border border-white/9 bg-white/[0.025] p-5 transition hover:-translate-y-0.5 hover:border-cyan-300/25 hover:bg-white/[0.04]"><div className="grid size-11 place-items-center rounded-xl bg-cyan-300/10 text-cyan-200"><item.icon className="size-5" /></div><h3 className="mt-4 text-lg font-semibold text-white">{item.title}</h3><p className="mt-2 text-sm leading-6 text-slate-400">{item.text}</p><span className="mt-4 flex items-center gap-1 text-xs font-semibold text-cyan-300">Открыть исходную схему <ArrowUpRight className="size-3.5" /></span></a>)}</div></section>
+
+        <MacroGuide />
 
         <section id="classes" className="scroll-mt-20 border-b border-white/8 px-4 py-14 sm:px-8 xl:px-14"><SectionTitle eyebrow="Готовые материалы" title="Выбор класса" text="В таблице подробно разобраны три класса. Открой вкладку класса, чтобы посмотреть его роль, билды и схемы." /><Tabs defaultValue="chanter" className="gap-5"><TabsList className="h-auto w-full justify-start gap-1 overflow-x-auto rounded-xl border border-white/9 bg-white/[0.035] p-1 sm:w-fit"><TabsTrigger value="chanter" className="px-4 py-2.5 data-[state=active]:bg-amber-300 data-[state=active]:text-[#160f03]"><WandSparkles /> Чантер</TabsTrigger><TabsTrigger value="ranger" className="px-4 py-2.5 data-[state=active]:bg-cyan-300 data-[state=active]:text-[#061017]"><Target /> Лучник</TabsTrigger><TabsTrigger value="assassin" className="px-4 py-2.5 data-[state=active]:bg-rose-300 data-[state=active]:text-[#18070b]"><Swords /> Ассасин</TabsTrigger></TabsList>{Object.entries(classData).map(([key, item]) => <TabsContent key={key} value={key}><div className="rounded-2xl border border-white/9 bg-white/[0.025] p-5 sm:p-7"><div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]"><div><p className="text-sm font-semibold text-cyan-300">{item.role}</p><h3 className="mt-1 text-3xl font-semibold tracking-tight text-white">{item.name}</h3><p className="mt-3 max-w-2xl leading-7 text-slate-400">{item.summary}</p><p className="mt-4 rounded-xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-slate-300">{item.stones}</p></div><div className="grid gap-3"><a href={item.startBuild} target="_blank" rel="noreferrer" className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm font-semibold text-white transition hover:border-cyan-300/30"><span><span className="block text-xs font-normal text-slate-500">Прокачка 1–45</span>Стартовый билд</span><ArrowUpRight className="size-4 text-cyan-300" /></a><a href={item.skillBuild} target="_blank" rel="noreferrer" className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm font-semibold text-white transition hover:border-cyan-300/30"><span><span className="block text-xs font-normal text-slate-500">После 45</span>Прокачка навыков</span><ArrowUpRight className="size-4 text-cyan-300" /></a></div></div><div className="mt-7 border-t border-white/8 pt-6"><div className="mb-3 flex items-center justify-between"><p className="text-sm font-semibold text-white">Ноды и панели из исходника</p><p className="text-xs text-slate-600">Нажми на изображение</p></div><ImageStrip files={item.files} alt={item.name} /></div></div></TabsContent>)}</Tabs></section>
 
