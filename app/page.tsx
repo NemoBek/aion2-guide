@@ -94,6 +94,8 @@ export default function Home() {
         <section id="tiers" className="scroll-mt-20 border-b border-white/8 px-4 py-14 sm:px-8 xl:px-14">
           <SectionTitle eyebrow="Оценка автора таблицы" title="Тир-листы классов" text="Сравнения по комфорту и разным режимам игры. Расстановка отражает мнение автора и может меняться с балансом." />
           <div className="grid gap-4 md:grid-cols-2">{tierLists.map((item) => <div key={item.title} className="min-w-0 rounded-2xl border border-white/9 bg-white/[0.025] p-5"><h3 className="mb-4 text-lg font-semibold text-white">{item.title}</h3><div className="space-y-2">{item.images.map((src) => <a key={src} href={assetPath(src)} target="_blank" rel="noreferrer" className="block overflow-hidden rounded-lg border border-white/10 bg-[#161616]"><img src={assetPath(src)} alt={item.title} className="h-auto max-w-full" loading="lazy" /></a>)}</div></div>)}</div>
+          <p className="mt-5 rounded-xl border border-cyan-300/12 bg-cyan-300/[0.035] px-5 py-4 text-sm leading-6 text-slate-300">Список группы при низком GS рассчитан на первые трансценденсы. По словам автора, по мере роста экипировки такие рейтинги теряют актуальность.</p>
+          <a href="https://www.youtube.com/watch?v=Q8cl1ld7uY8&t=1170s" target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300">Пояснение автора в видео <ArrowUpRight className="size-4" /></a>
           <a href={`${guide.sourceUrl}?gid=1644866515`} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300">Открыть тир-листы в таблице <ArrowUpRight className="size-4" /></a>
         </section>
 
