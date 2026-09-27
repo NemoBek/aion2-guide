@@ -32,7 +32,7 @@ function buildUrl(value, label) {
 
 export function validateSnapshot(snapshot) {
   object(snapshot, 'root');
-  if (snapshot.schemaVersion !== 1 || snapshot.sourceUrl !== sourceUrl) fail('schema/source');
+  if (snapshot.schemaVersion !== 2 || snapshot.sourceUrl !== sourceUrl) fail('schema/source');
   if (snapshot.lastSyncedAt !== null && (typeof snapshot.lastSyncedAt !== 'string' || Number.isNaN(Date.parse(snapshot.lastSyncedAt)))) fail('lastSyncedAt');
   list(snapshot.routeSteps, 'routeSteps', routeIds.length).forEach((entry, i) => {
     object(entry, `routeSteps[${i}]`);
@@ -60,6 +60,18 @@ export function validateSnapshot(snapshot) {
   list(snapshot.farmTiers, 'farmTiers', 3).forEach((entry, i) => {
     if (entry.tier !== ['S', 'A', 'B'][i] || entry.color !== ['bg-[#ff6b6b]', 'bg-[#ffad66]', 'bg-[#f6cf65]'][i]) fail(`farmTiers[${i}]`);
     list(entry.items, `farmTiers[${i}].items`, [3, 1, 3][i]).forEach((value, j) => string(value, `farmTiers[${i}].items[${j}]`));
+  });
+  const crafting = object(snapshot.crafting, 'crafting');
+  list(crafting.steps, 'crafting.steps', 5).forEach((entry, i) => {
+    object(entry, `crafting.steps[${i}]`);
+    string(entry.title, `crafting.steps[${i}].title`);
+    string(entry.text, `crafting.steps[${i}].text`);
+  });
+  list(crafting.notes, 'crafting.notes', 2).forEach((value, i) => string(value, `crafting.notes[${i}]`));
+  list(snapshot.tierLists, 'tierLists', 7).forEach((entry, i) => {
+    object(entry, `tierLists[${i}]`);
+    string(entry.title, `tierLists[${i}].title`);
+    list(entry.images, `tierLists[${i}].images`, i === 6 ? 3 : 1).forEach((value, j) => localImage(value, `tierLists[${i}].images[${j}]`));
   });
   list(snapshot.mechanics, 'mechanics', 5).forEach((entry, i) => {
     object(entry, `mechanics[${i}]`);

@@ -11,6 +11,7 @@ const sheetIds = {
   ranger: 1995008018,
   assassin: 927915054,
   chanter: 1998682920,
+  tierLists: 1644866515,
 };
 const publishBase = sourceUrl.replace(/\/pubhtml$/, '');
 const maxImageBytes = 5 * 1024 * 1024;
@@ -143,9 +144,11 @@ async function main() {
   };
   const progressionHtml = await download(`${publishBase}/pubhtml/sheet?headers=false&gid=${sheetIds.progression}`);
   const mechanicsHtml = await download(`${publishBase}/pubhtml/sheet?headers=false&gid=${sheetIds.mechanics}`);
+  const tierListsHtml = await download(`${publishBase}/pubhtml/sheet?headers=false&gid=${sheetIds.tierLists}`);
   const images = {
     progression: await prepareImages(progressionHtml, current.galleries.progression, 'progression'),
     mechanics: await prepareImages(mechanicsHtml, current.mechanics.map((item) => item.image), 'mechanics'),
+    tierLists: await prepareImages(tierListsHtml, current.tierLists.flatMap((item) => item.images), 'tierlists'),
   };
   const next = structuredClone(current);
   next.farmTiers.forEach((tier) => { tier.items = farm[tier.tier]; });
@@ -155,10 +158,12 @@ async function main() {
   next.routeSteps[1].image = next.galleries.progression[15];
   next.routeSteps[3].image = next.galleries.progression[10];
   next.mechanics.forEach((item, i) => { item.image = images.mechanics[i].reference; });
+  let tierImageIndex = 0;
+  next.tierLists.forEach((item) => { item.images = item.images.map(() => images.tierLists[tierImageIndex++].reference); });
   const same = JSON.stringify({ ...next, lastSyncedAt: null }) === JSON.stringify({ ...current, lastSyncedAt: null });
   if (same) { console.log('No guide data changes. Snapshot preserved.'); return; }
   next.lastSyncedAt = new Date().toISOString();
-  const files = [...images.progression, ...images.mechanics].filter((item) => item.buffer);
+  const files = [...images.progression, ...images.mechanics, ...images.tierLists].filter((item) => item.buffer);
   mkdirSync(path.join(root, 'public', 'assets', 'synced'), { recursive: true });
   for (const item of files) if (!existsSync(imageFile(item.reference))) writeFileSync(imageFile(item.reference), item.buffer, { flag: 'wx' });
   validateSnapshot(next);

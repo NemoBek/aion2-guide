@@ -5,15 +5,19 @@ export type GuideStep = { id: string; range: string; title: string; short: strin
 export type GuideTask = { id: string; title: string; text: string };
 export type GuideClass = { name: string; role: string; summary: string; startBuild: string; skillBuild: string; stones: string; files: string[] };
 export type FarmTier = { tier: "S" | "A" | "B"; color: string; items: string[] };
+export type CraftingGuide = { steps: { title: string; text: string }[]; notes: string[] };
+export type TierList = { title: string; images: string[] };
 export type Mechanic = { icon: keyof typeof mechanicIcons; title: string; text: string; image: string };
 export type GuideSnapshot = {
-  schemaVersion: 1;
+  schemaVersion: 2;
   sourceUrl: string;
   lastSyncedAt: string | null;
   routeSteps: GuideStep[];
   after45: GuideTask[];
   classData: Record<"ranger" | "assassin" | "chanter", GuideClass>;
   farmTiers: FarmTier[];
+  crafting: CraftingGuide;
+  tierLists: TierList[];
   mechanics: Mechanic[];
   galleries: { progression: string[] };
 };
