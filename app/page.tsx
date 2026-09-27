@@ -41,6 +41,10 @@ function MacroGuide() {
           <div className="grid min-w-28 place-items-center rounded-xl border border-amber-200/20 bg-[#0a1420]/80 px-4 py-3"><Keyboard className="mb-1 size-5 text-amber-200" /><kbd className="font-sans text-sm font-bold text-white">КЛАВИША</kbd><span className="mt-1 text-[.68rem] text-slate-400">встроенный макрос</span></div>
           <p className="basis-full pt-2 text-sm leading-6 text-slate-300">Игра повторяет выбранные навыки, а обычная атака вплетается между ними. Автор советует не добавлять ЛКМ в тот же список макроса: так анимации могут отменяться реже.</p>
         </div>
+        <div className="mt-5 overflow-hidden rounded-xl border border-white/10 bg-[#070d14]">
+          <p className="border-b border-white/8 px-3 py-2 text-xs font-semibold text-slate-300">Видеогайд Grobs по макросам</p>
+          <div className="relative aspect-video w-full"><iframe className="absolute inset-0 size-full" src="https://www.youtube-nocookie.com/embed/HMod6Z4GrE0?rel=0" title="Руководство по макросам в AION 2 — Grobs" loading="lazy" referrerPolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen /></div>
+        </div>
       </div>
       <div className="rounded-2xl border border-white/10 bg-[#101d2a]/80 p-5 sm:p-7">
         <p className="aion-eyebrow">Настройка в игре</p>
