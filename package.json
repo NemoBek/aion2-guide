@@ -12,7 +12,7 @@
     "preview:pages": "node scripts/preview-pages.mjs",
     "sync": "node scripts/sync-sheet.mjs",
     "start": "next start",
-    "lint": "eslint app/page.tsx app/layout.tsx data/guide.ts components/ui/accordion.tsx components/ui/checkbox.tsx components/ui/progress.tsx components/ui/tabs.tsx"
+    "lint": "eslint app/page.tsx app/layout.tsx app/day-two/page.tsx data/guide.ts data/day-two.ts components/day-two-guide.tsx components/ui/accordion.tsx components/ui/checkbox.tsx components/ui/progress.tsx components/ui/tabs.tsx"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
